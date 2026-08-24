@@ -57,3 +57,5 @@
 "Soporte Dropdown","Dropdown Support"
 "Activa el filtrado de galería por color cuando el atributo selector se renderiza como dropdown nativo (en vez de swatches). Útil para clientes que prefieren un <select> sobre swatches visuales. Cuando está OFF el módulo no impacta el flujo del dropdown nativo.","Enables color-based gallery filtering when the selector attribute renders as a native dropdown (instead of swatches). Useful for clients who prefer a <select> over visual swatches. When OFF the module does not impact the native dropdown flow."
 "Rollpix - Galería Configurable","Rollpix - Configurable Gallery"
+"Funcionar con el Modulo Deshabilitado","Run With the Module Disabled"
+"Permite que la imagen por color en carrito funcione aunque ""Habilitar Modulo"" este en No. Util para arreglar solo el carrito sin activar la galeria de PDP ni la imagen por swatch en PLP.","Lets the cart color image work even when ""Enable Module"" is set to No. Useful to fix only the cart without turning on the PDP gallery or the PLP swatch image."

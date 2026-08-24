@@ -155,6 +155,16 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Mostrar la imagen del color seleccionado en carrito y checkout. Usa el mapping de colores del padre o la imagen del producto simple como fallback.</comment>
                 </field>
+
+                <field id="standalone_mode" translate="label comment" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Funcionar con el Modulo Deshabilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Permite que la imagen por color en carrito funcione aunque "Habilitar Modulo" este en No. Util para arreglar solo el carrito sin activar la galeria de PDP ni la imagen por swatch en PLP.</comment>
+                    <depends>
+                        <field id="cart_image_override">1</field>
+                    </depends>
+                </field>
             </group>
 
             <!-- §9.5 Avanzado -->

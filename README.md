@@ -95,6 +95,7 @@ bin/magento setup:upgrade
 | Field | Default | Description |
 |---|---|---|
 | Cart Image Override | Yes | Show the selected color's image in cart, mini-cart, and checkout |
+| Run With the Module Disabled | No | Let the cart image override run even when **General &gt; Enable Module** is No. Opt-in escape hatch for stores that only want the cart/checkout thumbnail fixed, without the PDP gallery and PLP swatch behaviour. Requires *Cart Image Override* = Yes. |
 
 ### Advanced
 

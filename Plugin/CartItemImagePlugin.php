@@ -23,6 +23,9 @@ use Rollpix\ConfigurableGallery\Model\Config;
  *
  * Strategy 1: Color-specific image from parent's associated_attributes mapping.
  * Strategy 2: Simple product's own base image (fallback when no color mapping).
+ *
+ * Runs when the module is enabled, or when cart/standalone_mode was opted into
+ * so the cart thumbnail can be fixed without enabling the PDP/PLP behaviour.
  */
 class CartItemImagePlugin
 {
@@ -44,7 +47,7 @@ class CartItemImagePlugin
         Product $result,
         ItemInterface $item
     ): Product {
-        if (!$this->config->isEnabled() || !$this->config->isCartImageOverrideEnabled()) {
+        if (!$this->config->isCartImageOverrideActive()) {
             return $result;
         }
 
