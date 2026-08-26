@@ -26,6 +26,7 @@
             </propagation>
             <cart>
                 <cart_image_override>1</cart_image_override>
+                <standalone_mode>0</standalone_mode>
             </cart>
             <advanced>
                 <debug_mode>0</debug_mode>

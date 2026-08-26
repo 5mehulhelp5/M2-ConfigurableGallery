@@ -37,6 +37,7 @@ class Config
 
     // §9.4 Cart/Checkout
     private const XML_PATH_CART_IMAGE_OVERRIDE = self::XML_PATH_PREFIX . 'cart/cart_image_override';
+    private const XML_PATH_CART_STANDALONE_MODE = self::XML_PATH_PREFIX . 'cart/standalone_mode';
 
     // §9.5 Advanced
     private const XML_PATH_DEBUG_MODE = self::XML_PATH_PREFIX . 'advanced/debug_mode';
@@ -211,6 +212,38 @@ class Config
             ScopeInterface::SCOPE_STORE,
             $storeId
         );
+    }
+
+    /**
+     * Whether the cart image override may run with the module master switch off.
+     *
+     * Opt-in escape hatch for stores that only want the cart/checkout thumbnail
+     * fixed, without the PDP gallery and PLP swatch behaviour that general/enabled
+     * turns on. Defaults to disabled so existing installs keep their current
+     * behaviour when the module is upgraded.
+     */
+    public function isCartStandaloneModeEnabled(int|string|null $storeId = null): bool
+    {
+        return $this->scopeConfig->isSetFlag(
+            self::XML_PATH_CART_STANDALONE_MODE,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
+    }
+
+    /**
+     * Whether the cart image override should run for this store.
+     *
+     * Active when the module is enabled, or when standalone mode was explicitly
+     * opted into. The cart_image_override switch still gates it in both cases.
+     */
+    public function isCartImageOverrideActive(int|string|null $storeId = null): bool
+    {
+        if (!$this->isCartImageOverrideEnabled($storeId)) {
+            return false;
+        }
+
+        return $this->isEnabled($storeId) || $this->isCartStandaloneModeEnabled($storeId);
     }
 
     public function isDebugMode(int|string|null $storeId = null): bool
